@@ -10,10 +10,8 @@ def fgsm(model, x, t, eps, targeted, **kwargs):
     loss = nn.CrossEntropyLoss()
     # make sure gradient wrt to x is computed
     x.requires_grad = True
-    # zero the gradients
-    model.zero_grad()
     # compute the output of the model
-    output = model(x).squeeze()
+    output = model(x) # (batch_size, n_classes)
     # recast the target to a tensor
     t = torch.tensor(t, torch.int64)
     # compute the loss of the output with respect to the target label
