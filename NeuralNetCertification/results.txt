@@ -1,0 +1,9 @@
+Basic Feed Forward Neural Networks show these results:
+
+-- A NN trained for robustness with the PGD algorithm:
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 10000/10000 [01:12<00:00, 138.62it/s, acc=0.975, adv_acc=0.958, cert_acc=0.619]
+Clean Acc 0.97470, Adversarial Acc 0.95830, [Certified Acc 0.61900]
+
+-- A NN trained for robustness with the TRADES algorithm:
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 10000/10000 [01:13<00:00, 135.88it/s, acc=0.974, adv_acc=0.959, cert_acc=0.624]
+Clean Acc 0.97430, Adversarial Acc 0.95880, [Certified Acc 0.62440]
