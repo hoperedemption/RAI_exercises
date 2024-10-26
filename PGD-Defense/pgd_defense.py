@@ -32,11 +32,15 @@ for epoch in range(1, args.num_epochs + 1):
             loss = ce_loss(model(x_max_batch), y_batch)
 
         elif args.defense == 'TRADES':
+            # switch to training mode 
+            model.train()
+            logits = model(x_batch)
+            proba = F.softmax(logits.detach(), dim=-1)
             # evaluate model
             model.eval()
             # run PGD attack
             vechev_constant = 2.5 * args.eps / args.k
-            x_max_batch = pgd(model, x_batch, y_batch, args.k, args.eps, vechev_constant)
+            x_max_batch = pgd(model, x_batch, proba, args.k, args.eps, vechev_constant)
             # train model
             model.train()
             # evaluate the loss on x_batch
